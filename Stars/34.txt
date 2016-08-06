@@ -1,4 +1,0 @@
-Star name: 34
-Skewness: 45.0
-Kurtosis: 45.0
-45
