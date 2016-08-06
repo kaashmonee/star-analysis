@@ -1,4 +1,0 @@
-Star name: HD183143
-Skewness: 0.43
-Kurtosis: 0.34
-calcium
