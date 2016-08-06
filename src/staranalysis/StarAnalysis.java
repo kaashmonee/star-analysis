@@ -33,7 +33,7 @@ public class StarAnalysis {
         
         
         while (thereMore){
-        System.out.print("Please enter the star name: ");
+        System.out.print("\nPlease enter the star name: ");
         starName=r.readLine();
         System.out.print("\nKurtosis: ");
         kurtosis=sc.nextDouble();
@@ -41,18 +41,20 @@ public class StarAnalysis {
         skewness=sc.nextDouble();
         System.out.print("\nNotes:");
         
-                
-        notes=r.readLine();
+        
         Star s=new Star(starName, skewness, kurtosis);
         starList.add(s);
-        
+        String line;
         try  {
             PrintWriter writer;
             writer = new PrintWriter("Stars/"+s.getName()+".txt","UTF-8");
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
-            writer.println(notes);
+            while ((line=r.readLine())!=null && line.length()!=0) {       
+            writer.println(line);
+            }
+            //writer.println(notes);
             writer.close();
             System.out.print("\nContinue? (y/n): ");
             
