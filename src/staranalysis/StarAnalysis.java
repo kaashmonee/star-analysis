@@ -40,29 +40,22 @@ public class StarAnalysis {
         System.out.print("\nSkewness: ");
         skewness=sc.nextDouble();
         System.out.print("\nNotes:");
-        /*if (console==null) System.out.print("console not available");
-        else {
-            notes=console.readLine();
-        }
-                */
+        
+                
         notes=r.readLine();
         Star s=new Star(starName, skewness, kurtosis);
         starList.add(s);
-        //System.out.print(s.getName()+" ");
+        
         try  {
             PrintWriter writer;
-            writer = new PrintWriter(s.getName()+".txt","UTF-8");
+            writer = new PrintWriter("Stars/"+s.getName()+".txt","UTF-8");
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
             writer.println(notes);
             writer.close();
             System.out.print("\nContinue? (y/n): ");
-            /*if (console==null) System.out.print("console not available");
-            else {
-            yn=console.readLine();
-            }
-                    */
+            
             yn=r.readLine();
             thereMore = yn.equals("y");
         }
@@ -71,6 +64,11 @@ public class StarAnalysis {
         }
         
         }
+        PrintWriter writer2=new PrintWriter("Stars/StarsDone.txt","UTF-8");
+        for (Star star: starList) {
+            writer2.println(star.getName());
+        }
+        writer2.close();
     }
     
 }
