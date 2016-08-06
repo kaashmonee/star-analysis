@@ -1,0 +1,5 @@
+Star name: newTest
+Skewness: 234.0
+Kurtosis: 234.0
+thereare more notes here
+

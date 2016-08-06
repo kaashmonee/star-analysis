@@ -1,0 +1,4 @@
+Star name: work
+Skewness: 234.0
+Kurtosis: 234.0
+

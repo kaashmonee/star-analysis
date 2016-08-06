@@ -1,0 +1,6 @@
+Star name: star name
+Skewness: 234.0
+Kurtosis: 234.0
+234
+notes
+more notes

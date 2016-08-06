@@ -1,0 +1,6 @@
+Star name: 234
+Skewness: 234.0
+Kurtosis: 234.0
+sdf
+aslkdf
+
