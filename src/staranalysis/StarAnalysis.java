@@ -19,39 +19,51 @@ public class StarAnalysis {
      * @throws java.io.FileNotFoundException
      * @throws java.io.UnsupportedEncodingException
      */
-    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException {
         Scanner sc=new Scanner(System.in);
         boolean thereMore=true;
         String starName;
         double kurtosis;
         double skewness;
-        String yn;
-        String notes;
-        ArrayList<Star> starList=new ArrayList<Star>();
-        
+        String yn = "";
+        String notes = "";
+        ArrayList<Star> starList=new ArrayList<>();
+        Console console=System.console();
+        BufferedReader r= new BufferedReader(new InputStreamReader(System.in));
         
         
         while (thereMore){
         System.out.print("Please enter the star name: ");
-        starName=sc.nextLine();
+        starName=r.readLine();
         System.out.print("\nKurtosis: ");
         kurtosis=sc.nextDouble();
         System.out.print("\nSkewness: ");
         skewness=sc.nextDouble();
         System.out.print("\nNotes:");
-        notes=sc.next();
+        /*if (console==null) System.out.print("console not available");
+        else {
+            notes=console.readLine();
+        }
+                */
+        notes=r.readLine();
         Star s=new Star(starName, skewness, kurtosis);
         starList.add(s);
         //System.out.print(s.getName()+" ");
         try  {
             PrintWriter writer;
-            writer = new PrintWriter("pleasework"+".txt","UTF-8");
+            writer = new PrintWriter(s.getName()+".txt","UTF-8");
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
             writer.println(notes);
+            writer.close();
             System.out.print("\nContinue? (y/n): ");
-            yn=sc.next();
+            /*if (console==null) System.out.print("console not available");
+            else {
+            yn=console.readLine();
+            }
+                    */
+            yn=r.readLine();
             thereMore = yn.equals("y");
         }
         catch (FileNotFoundException | UnsupportedEncodingException e) {
