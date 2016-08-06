@@ -39,22 +39,25 @@ public class StarAnalysis {
         System.out.print("\nSkewness: ");
         skewness=sc.nextDouble();
         System.out.print("\nNotes:");
-        notes=sc.nextLine();
-        System.out.print("Continue? (y/n): ");
-        yn=sc.next();
-        thereMore = yn.equals("y");
+        notes=sc.next();
         Star s=new Star(starName, skewness, kurtosis);
         starList.add(s);
         //System.out.print(s.getName()+" ");
-        try (PrintWriter writer = new PrintWriter(s.getName()+".txt","UTF-8")) {
+        try  {
+            PrintWriter writer;
+            writer = new PrintWriter("pleasework"+".txt","UTF-8");
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
             writer.println(notes);
+            System.out.print("\nContinue? (y/n): ");
+            yn=sc.next();
+            thereMore = yn.equals("y");
         }
-        catch (Exception e) {
+        catch (FileNotFoundException | UnsupportedEncodingException e) {
             System.out.print(e);
         }
+        
         }
     }
     
