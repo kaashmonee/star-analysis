@@ -20,4 +20,8 @@ public class Star {
     }
     
     public String getName() {return name;}
+    
+    public double kurtosis() {return kurtosis;}
+    
+    public double skewness() {return skewness;}
 }

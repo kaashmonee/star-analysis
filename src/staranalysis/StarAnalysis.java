@@ -6,6 +6,7 @@
 package staranalysis;
 
 import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -19,13 +20,41 @@ public class StarAnalysis {
      * @throws java.io.UnsupportedEncodingException
      */
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        Star s=new Star("HD183143",0.45,0.23);
-        System.out.print(s.getName()+" ");
+        Scanner sc=new Scanner(System.in);
+        boolean thereMore=true;
+        String starName;
+        double kurtosis;
+        double skewness;
+        String yn;
+        String notes;
+        ArrayList<Star> starList=new ArrayList<Star>();
+        
+        
+        
+        while (thereMore){
+        System.out.print("Please enter the star name: ");
+        starName=sc.nextLine();
+        System.out.print("\nKurtosis: ");
+        kurtosis=sc.nextDouble();
+        System.out.print("\nSkewness: ");
+        skewness=sc.nextDouble();
+        System.out.print("\nNotes:");
+        notes=sc.nextLine();
+        System.out.print("Continue? (y/n): ");
+        yn=sc.next();
+        thereMore = yn.equals("y");
+        Star s=new Star(starName, skewness, kurtosis);
+        starList.add(s);
+        //System.out.print(s.getName()+" ");
         try (PrintWriter writer = new PrintWriter(s.getName()+".txt","UTF-8")) {
-            writer.println("this is the first line");
+            writer.println("Star name: "+s.getName());
+            writer.println("Skewness: "+s.skewness());
+            writer.println("Kurtosis: "+s.kurtosis());
+            writer.println(notes);
         }
         catch (Exception e) {
             System.out.print(e);
+        }
         }
     }
     
