@@ -79,12 +79,17 @@ public class StarAnalysis {
     
     public static void openPDF(int val) {
         if (Desktop.isDesktopSupported()) {
-            File myFile= new File("hires");
-            String [] files=myFile.list();
+            File hiResFolder= new File("hires");
+            String [] hiFiles=hiResFolder.list();
+            /*
+            File lowResFolder= new File("lowres"); STILL NEED TO ADD LOW RES FOLDER
+            String [] lowFiles=lowResFolder.list();*/
             try {
                 
-                File temp= new File("hires/"+files[val]);
-                Desktop.getDesktop().open(temp);
+                File hiFile= new File("hires/"+hiFiles[val]);
+                /*File lowFile=new File("lowres/"+lowFiles[val]);*/ //INCLUDE WHEN YOU ADD LOW RES FOLDER
+                Desktop.getDesktop().open(hiFile);
+                //Desktop.getDesktop().open(lowFile); INCLUDE WHEN YOU ADD LOW RES FOLDER
             }
             catch (IOException e) {
                 System.out.print(e);
