@@ -93,7 +93,6 @@ public class StarAnalysis {
             }
             catch (IOException e) {
                 System.out.print(e);
-                System.out.println("I like cookies");
             }
         }
     }
