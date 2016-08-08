@@ -5,6 +5,7 @@
  */
 package src.staranalysis;
 
+import java.awt.Desktop;
 import java.io.*;
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class StarAnalysis {
      * @throws java.io.UnsupportedEncodingException
      */
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException {
-        Scanner sc=new Scanner(System.in);
+       Scanner sc=new Scanner(System.in);
         boolean thereMore=true;
         String starName;
         double kurtosis;
@@ -30,9 +31,10 @@ public class StarAnalysis {
         ArrayList<Star> starList=new ArrayList<>();
         Console console=System.console();
         BufferedReader r= new BufferedReader(new InputStreamReader(System.in));
-        
+        int fileNum=0;
         
         while (thereMore){
+        openPDF(fileNum);
         System.out.print("\nPlease enter the star name: ");
         starName=r.readLine();
         System.out.print("\nKurtosis: ");
@@ -64,13 +66,30 @@ public class StarAnalysis {
         catch (FileNotFoundException | UnsupportedEncodingException e) {
             System.out.print(e);
         }
-        
+        fileNum++;
         }
         PrintWriter writer2=new PrintWriter("Stars/StarsDone.txt","UTF-8");
         for (Star star: starList) {
             writer2.println(star.getName());
         }
         writer2.close();
+               
+        
+    }
+    
+    public static void openPDF(int val) {
+        if (Desktop.isDesktopSupported()) {
+            File myFile= new File("hires");
+            String [] files=myFile.list();
+            try {
+                
+                File temp= new File("hires/"+files[val]);
+                Desktop.getDesktop().open(temp);
+            }
+            catch (IOException e) {
+                System.out.print(e);
+            }
+        }
     }
     
 }
