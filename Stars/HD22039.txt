@@ -1,0 +1,6 @@
+Star name: HD22039
+Skewness: 34.0
+Kurtosis: 32.0
+-here are some notes
+-tell me what you think of these ntoes
+-you can keep typing and the ntoes are getting stored in an external text file athat will be stored somewehre
