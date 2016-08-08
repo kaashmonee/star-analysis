@@ -24,4 +24,13 @@ public class Star {
     public double kurtosis() {return kurtosis;}
     
     public double skewness() {return skewness;}
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return name+"    Kurtosis: "+kurtosis+"    Skewness: "+skewness;
+    }
 }

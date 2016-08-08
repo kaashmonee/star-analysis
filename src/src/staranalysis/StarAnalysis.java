@@ -70,7 +70,7 @@ public class StarAnalysis {
         }
         PrintWriter writer2=new PrintWriter("Stars/StarsDone.txt","UTF-8");
         for (Star star: starList) {
-            writer2.println(star.getName());
+            writer2.println(star);
         }
         writer2.close();
                
@@ -111,7 +111,8 @@ public class StarAnalysis {
 
 /*
 Things to do:
--find a way to close the PDFs after clicking y/n
+-find a way to close the PDFs after clicking y/n **very necessary for convenience sake
 -make it generic and not only kurtosis/skewness
 -possibly delete skewness and kurtosis parameters? you have to look at the spreadsheet anyway
+-find a way to append things to the StarsDone file
 */
