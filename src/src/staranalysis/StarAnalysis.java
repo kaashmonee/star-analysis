@@ -77,7 +77,7 @@ public class StarAnalysis {
         
     }
     
-    public static void openPDF(int val) {
+    private static void openPDF(int val) {
         if (Desktop.isDesktopSupported()) {
             File hiResFolder= new File("hires");
             String [] hiFiles=hiResFolder.list();
@@ -93,8 +93,15 @@ public class StarAnalysis {
             }
             catch (IOException e) {
                 System.out.print(e);
+                System.out.println("I like cookies");
             }
         }
     }
     
 }
+
+/*
+Things to do:
+-find a way to close the PDFs after clicking y/n
+-make it generic and not only kurtosis/skewness
+*/
