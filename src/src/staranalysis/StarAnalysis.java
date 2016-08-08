@@ -81,17 +81,27 @@ public class StarAnalysis {
         if (Desktop.isDesktopSupported()) {
             File hiResFolder= new File("hires");
             String [] hiFiles=hiResFolder.list();
-            /*
-            File lowResFolder= new File("lowres"); STILL NEED TO ADD LOW RES FOLDER
-            String [] lowFiles=lowResFolder.list();*/
+            
+            File lowResFolder= new File("lowres"); 
+            String [] lowFiles=lowResFolder.list();
             try {
-                
+                if (val<hiFiles.length) {
                 File hiFile= new File("hires/"+hiFiles[val]);
-                /*File lowFile=new File("lowres/"+lowFiles[val]);*/ //INCLUDE WHEN YOU ADD LOW RES FOLDER
                 Desktop.getDesktop().open(hiFile);
-                //Desktop.getDesktop().open(lowFile); INCLUDE WHEN YOU ADD LOW RES FOLDER
+                }
+                else {
+                    System.out.println("No more files in high resolution folder.");
+                }
+                if (val<lowFiles.length) {
+                File lowFile=new File("lowres/"+lowFiles[val]); 
+                
+                Desktop.getDesktop().open(lowFile);
+                }
+                else {
+                    System.out.println("No more files in low resolution folder.");
+                }
             }
-            catch (IOException e) {
+            catch (Exception e) {
                 System.out.print(e);
             }
         }
@@ -103,4 +113,5 @@ public class StarAnalysis {
 Things to do:
 -find a way to close the PDFs after clicking y/n
 -make it generic and not only kurtosis/skewness
+-possibly delete skewness and kurtosis parameters? you have to look at the spreadsheet anyway
 */
