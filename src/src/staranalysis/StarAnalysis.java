@@ -34,7 +34,9 @@ public class StarAnalysis {
         int fileNum=0;
         
         while (thereMore){
-        openPDF(fileNum);
+        System.out.print("Please enter the starting index: ");
+        fileNum=Integer.parseInt(r.readLine());
+        openPDF(fileNum-1);
         System.out.print("\nPlease enter the star name: ");
         starName=r.readLine();
         System.out.print("\nKurtosis: ");
