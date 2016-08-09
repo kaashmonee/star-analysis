@@ -1,7 +1,0 @@
-Star name: new star
-Skewness: 234.0
-Kurtosis: 543.0
-sdf
-aslkdf
-
-

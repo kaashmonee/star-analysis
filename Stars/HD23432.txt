@@ -1,6 +1,0 @@
-Star name: HD23432
-Skewness: 234.0
-Kurtosis: 234.0
-sdf
-aslkdf
-

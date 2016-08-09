@@ -1,4 +1,0 @@
-Star name: si per
-Skewness: 443.0
-Kurtosis: 334.0
--notes

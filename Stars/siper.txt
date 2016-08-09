@@ -1,7 +1,0 @@
-Star name: siper
-Skewness: 0.34
-Kurtosis: 0.22
--seems to be some redward wings
--strange despite there bein only some features here
--some blue wardcontamination
--complete bullshit notes

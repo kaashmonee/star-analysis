@@ -1,4 +1,0 @@
-Star name: HD2343
-Skewness: 234.0
-Kurtosis: 234.0
-ntoes to make sure it's still working
