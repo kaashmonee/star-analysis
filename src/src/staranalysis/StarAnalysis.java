@@ -81,9 +81,12 @@ public class StarAnalysis {
         if (Desktop.isDesktopSupported()) {
             File hiResFolder= new File("hires");
             String [] hiFiles=hiResFolder.list();
+            hiFiles=alphabetize(hiFiles);
             
             File lowResFolder= new File("lowres"); 
             String [] lowFiles=lowResFolder.list();
+            lowFiles=alphabetize(lowFiles);
+            
             try {
                 if (val<hiFiles.length) {
                 File hiFile= new File("hires/"+hiFiles[val]);
@@ -107,8 +110,23 @@ public class StarAnalysis {
         }
     }
     
-}
+    private static String [] alphabetize (String [] Array) {
+        for(int j=0; j<Array.length;j++)
+        {
+             for (int i=j+1 ; i<Array.length; i++)
+             {
+                if(Array[i].substring(1,2).compareTo(Array[j].substring(1,2))<0)
+                {
+                 String temp= Array[j];
+                 Array[j]= Array[i]; 
+                 Array[i]=temp;
+                }
+        }
+    }
+        return Array;
+    }
 
+}
 /*
 Things to do:
 -find a way to close the PDFs after clicking y/n **very necessary for convenience sake
