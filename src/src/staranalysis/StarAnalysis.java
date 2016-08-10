@@ -26,6 +26,9 @@ public class StarAnalysis {
         String starName;
         double kurtosis;
         double skewness;
+        double FWHM;
+        double CW;
+        boolean firstTime=true;
         String yn = "";
         String notes = "";
         ArrayList<Star> starList=new ArrayList<>();
@@ -34,19 +37,26 @@ public class StarAnalysis {
         int fileNum=0;
         
         while (thereMore){
+        if (firstTime) {
         System.out.print("Please enter the starting index: ");
         fileNum=Integer.parseInt(r.readLine());
-        openPDF(fileNum-1);
+        openPDF(fileNum-=1);
+        }
+        else {openPDF(fileNum);}
         System.out.print("\nPlease enter the star name: ");
         starName=r.readLine();
         System.out.print("\nKurtosis: ");
         kurtosis=sc.nextDouble();
         System.out.print("\nSkewness: ");
         skewness=sc.nextDouble();
+        System.out.print("\nFull Width at Half Max: ");
+        FWHM=sc.nextDouble();
+        System.out.print("\nCentral Wavelength: ");
+        CW=sc.nextDouble();
         System.out.print("\nNotes:");
         
         
-        Star s=new Star(starName, skewness, kurtosis);
+        Star s=new Star(starName, skewness, kurtosis, FWHM, CW);
         starList.add(s);
         String line;
         try  {
@@ -55,9 +65,12 @@ public class StarAnalysis {
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
+            writer.println("FWHM: "+s.FWHM());
+            writer.println("Central Wavelength: "+s.CW());
             while (true) {  
             line=r.readLine();
             if(line.equals("DONE")) break;
+            else
             writer.println(line);
             }
             //writer.println(notes);
@@ -71,6 +84,7 @@ public class StarAnalysis {
             System.out.print(e);
         }
         fileNum++;
+        firstTime=false;
         }
         PrintWriter writer2=new PrintWriter("Stars/StarsDone.txt","UTF-8");
         for (Star star: starList) {

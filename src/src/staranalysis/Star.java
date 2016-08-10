@@ -13,10 +13,14 @@ public class Star {
     private String name;
     private double kurtosis;
     private double skewness;
-    public Star(String name, double kurtosis, double skewness){
+    private double FWHM;
+    private double CW;
+    public Star(String name, double kurtosis, double skewness, double FWHM, double CW){
         this.name=name;
         this.kurtosis=kurtosis;
         this.skewness=skewness;
+        this.FWHM=FWHM;
+        this.CW=CW;
     }
     
     public String getName() {return name;}
@@ -25,12 +29,16 @@ public class Star {
     
     public double skewness() {return skewness;}
     
+    public double FWHM() {return FWHM;}
+    
+    public double CW() {return CW;}
+    
     /**
      *
      * @return
      */
     @Override
     public String toString() {
-        return name+"    Kurtosis: "+kurtosis+"    Skewness: "+skewness;
+        return name+"    Kurtosis: "+kurtosis+"    Skewness: "+skewness+"    FWHM: "+FWHM+"    CW: "+CW;
     }
 }
