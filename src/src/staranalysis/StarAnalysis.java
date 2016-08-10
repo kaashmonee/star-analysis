@@ -55,7 +55,9 @@ public class StarAnalysis {
             writer.println("Star name: "+s.getName());
             writer.println("Skewness: "+s.skewness());
             writer.println("Kurtosis: "+s.kurtosis());
-            while ((line=r.readLine())!="DONE") {       
+            while (true) {  
+            line=r.readLine();
+            if(line.equals("DONE")) break;
             writer.println(line);
             }
             //writer.println(notes);
