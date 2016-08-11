@@ -53,6 +53,7 @@ public class StarAnalysis {
         FWHM=sc.nextDouble();
         System.out.print("\nCentral Wavelength: ");
         CW=sc.nextDouble();
+        System.out.println("\n");
         System.out.print("\nNotes:");
         
         
