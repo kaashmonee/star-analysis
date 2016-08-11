@@ -86,9 +86,9 @@ public class StarAnalysis {
         fileNum++;
         firstTime=false;
         }
-        PrintWriter writer2=new PrintWriter("Stars/StarsDone.txt","UTF-8");
+        PrintWriter writer2=new PrintWriter(new FileOutputStream(new File("Stars/StarsDone.txt"), true));
         for (Star star: starList) {
-            writer2.println(star);
+            writer2.append("\n"+star.toString());
         }
         writer2.close();
                
