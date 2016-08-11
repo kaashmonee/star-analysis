@@ -56,7 +56,7 @@ public class StarAnalysis {
         System.out.print("\nNotes:");
         
         
-        Star s=new Star(starName, skewness, kurtosis, FWHM, CW);
+        Star s=new Star(starName, kurtosis, skewness, FWHM, CW);
         starList.add(s);
         String line;
         try  {
