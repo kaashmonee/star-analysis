@@ -20,20 +20,28 @@ public class StarAnalysis {
      * @throws java.io.FileNotFoundException
      * @throws java.io.UnsupportedEncodingException
      */
+    
+        static String starName;
+        static double kurtosis;
+        static double skewness;
+        static double FWHM;
+        static double CW;
+        static double extinction;
+        static String spectralType;
+        static Scanner sc=new Scanner(System.in);
+        static String DIB;
+        static double equivalentWidth;
+        static BufferedReader r= new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException {
-       Scanner sc=new Scanner(System.in);
+        
         boolean thereMore=true;
-        String starName;
-        double kurtosis;
-        double skewness;
-        double FWHM;
-        double CW;
+        
         boolean firstTime=true;
         String yn = "";
         String notes = "";
         ArrayList<Star> starList=new ArrayList<>();
         Console console=System.console();
-        BufferedReader r= new BufferedReader(new InputStreamReader(System.in));
+        
         int fileNum=0;
         
         while (thereMore){
@@ -43,31 +51,26 @@ public class StarAnalysis {
         openPDF(fileNum-=1);
         }
         else {openPDF(fileNum);}
-        System.out.print("\nPlease enter the star name: ");
-        starName=r.readLine();
-        System.out.print("\nKurtosis: ");
-        kurtosis=sc.nextDouble();
-        System.out.print("\nSkewness: ");
-        skewness=sc.nextDouble();
-        System.out.print("\nFull Width at Half Max: ");
-        FWHM=sc.nextDouble();
-        System.out.print("\nCentral Wavelength: ");
-        CW=sc.nextDouble();
-        System.out.println("\n");
-        System.out.print("\nNotes:");
+        
+        init(); //initializes everything and gets data
         
         
-        Star s=new Star(starName, kurtosis, skewness, FWHM, CW);
+        Star s=new Star(starName, kurtosis, skewness, FWHM, CW, spectralType, extinction);
         starList.add(s);
         String line;
         try  {
             PrintWriter writer;
             writer = new PrintWriter("Stars/"+s.getName()+".txt","UTF-8");
             writer.println("Star name: "+s.getName());
-            writer.println("Skewness: "+s.skewness());
-            writer.println("Kurtosis: "+s.kurtosis());
+            writer.println("Spectral Type: "+s.getType());
+            writer.println("E(B-V): "+s.getExtinction());
+            writer.println("DIB: "+DIB);
+            writer.println("Equivalent Width: "+equivalentWidth);
+            writer.println("Skewness R:(-0.11,0.55): "+s.skewness());
+            writer.println("Kurtosis R:(-0.73,0.36): "+s.kurtosis());
             writer.println("FWHM: "+s.FWHM());
             writer.println("Central Wavelength: "+s.CW());
+            writer.println("\nNOTES:");
             while (true) {  
             line=r.readLine();
             if(line.equals("DONE")) break;
@@ -143,6 +146,29 @@ public class StarAnalysis {
         }
     }
         return Array;
+    }
+    
+    private static void init () throws IOException {
+        System.out.print("\nPlease enter the star name: ");
+        starName=r.readLine();
+        System.out.print("\nPlease enter spectral type: ");
+        spectralType=r.readLine();
+        System.out.print("\nE(B-V): ");
+        extinction=sc.nextDouble();
+        System.out.print("\nFor what DIB? ");
+        DIB=r.readLine();
+        System.out.print("\nEquivalent Width (A): ");
+        equivalentWidth=sc.nextDouble();
+        System.out.print("\nKurtosis: ");
+        kurtosis=sc.nextDouble();
+        System.out.print("\nSkewness: ");
+        skewness=sc.nextDouble();
+        System.out.print("\nFull Width at Half Max: ");
+        FWHM=sc.nextDouble();
+        System.out.print("\nCentral Wavelength: ");
+        CW=sc.nextDouble();
+        System.out.println("\n");
+        System.out.print("\nNotes:");
     }
 
 }
